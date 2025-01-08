@@ -4,10 +4,13 @@
 
 :root {
 	--bg: #1B1B1F;
+	--sec: #32363F;
+	--hover: #414853;
 	--tx1: #DFDFD6;
 	--tx2: #98989F;
 	--main: #FCC832;
-	--sec: #32363F;
+	--red: #F02C50;
+	--green: #3BF172;
 	
 	color: var(--tx2);
 	background: var(--bg);
@@ -57,28 +60,45 @@ button {
 }
 button:active {
 	scale: 0.95;
-	background: var(--tx2);
+	background: #dda703;
 }
 .btn-secondary:active {
-	background: var(--bg);
+	background: var(--hover);
 }
 
 /* Input */
 label {
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
-}
-label span {
-	color: var(--tx1);
+	gap: 6px;
 }
 label .container {
+	outline: 0px solid transparent;
 	padding: 12px 16px;
 	background: #121214;
 	transition: 0.1s ease;
 	display: flex;
-	gap: 12px;
+	align-items: center;
+	gap: 10px;
 }
+
+label .container:has(input:user-valid) svg {
+	stroke: var(--tx1);
+}
+label .container:has(input:focus) svg {
+	stroke: var(--main);
+}
+label .container:has(input:user-invalid) svg {
+	stroke: var(--red);
+}
+
+label .container:has(input:focus) {
+	outline: 3px solid var(--main);
+}
+label .container:has(input:user-invalid) {
+	outline: 3px solid var(--red);
+}
+
 input {
 	padding: 0;
 	border: 0;
@@ -87,7 +107,4 @@ input {
 }
 input:focus {
 	outline: none;
-}
-label .container:has(input:focus) {
-	outline: 3px solid var(--sec);
 }
